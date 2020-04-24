@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <h2>졸업사정 체크리스트</h2>
+  <div id="">
+    <table border=solid width=70%>
+      <tr>
+        <th width=35%>구분</th>
+        <th width=65%>이수 학점</th>
+      </tr>
+      <tr>
+        <th>전공기초</th>
+        <td style="text-align:center;">
+          <select id="baseselector" style="width:3rem;">
+            <option value="0">0</option>
+            <option value="3">3</option>
+            <option value="6">6</option>
+            <option value="9">9</option>
+            <option value="12">12</option>
+            <option value="15">15</option>
+          </select> 학점
+        </td>
+      </tr>
+      <tr>
+        <th>전공필수</th>
+        <td style="text-align:center;">
+          <select id="neceselector" style="width:3rem;">
+            <option value="0">0</option>
+            <option value="3">3</option>
+            <option value="6">6</option>
+            <option value="9">9</option>
+            <option value="12">12</option>
+            <option value="15">15</option>
+          </select> 학점
+        </td>
+      </tr>
+    </table><br>
+    <script>
+      function Result() {
+        var basepoint = document.getElementById("baseselector").value
+        var necepoint = document.getElementById("neceselector").value
+        if (basepoint < 10 && necepoint < 9) {
+          alert("전공기초 " + [10 - basepoint] + "학점 미달\n" +
+            "전공필수 " + [9 - necepoint] + "학점 미달");
+        } else if (basepoint >= 10 && necepoint < 9) {
+          alert("전공기초 기준 통과\n" + "전공필수 " + [9 - necepoint] + "학점 미달")
+        } else if (basepoint < 10 && necepoint >= 9) {
+          alert("전공기초 " + [10 - basepoint] + "학점 미달\n전공필수 기준 통과")
+        } else {
+          alert("전공기초 & 전공필수 기준 통과");
+        }
+      }
+
+      function Reset() {
+        var baseresetor = document.getElementById("baseselector");
+        var neceresetor = document.getElementById("neceselector");
+        baseresetor.selectedIndex = 0;
+        neceresetor.selectedIndex = 0;
+      }
+    </script>
+    <input type="submit" value="결과확인" onclick="Result();">
+    <input type="submit" value="초기화" onclick="Reset();">
+  </div>
+</body>
+
+</html>
